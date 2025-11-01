@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
 import { Search, Mail, Bell, User, ChevronLeft, ChevronRight, MapPin, Filter, Star, Sliders } from 'lucide-react';
 import "../styles/pages/landing.css";
-
+import Navbar from "../components/Navbar";
+import hero1 from "../assets/images/hero/diskon.jpg";
+import hero2 from "../assets/images/hero/diskon1.jpg";
+import hero3 from "../assets/images/hero/diskon2.jpg";
+import { useEffect } from "react";
 const LandingPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const heroImages = [hero1, hero2, hero3];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+
   
   const umkmList = [
-    { id: 1, name: "Kopi Kita", category: "Minuman", rating: 4.7, distance: "0.8 km" },
+    { id: 1, name: "Kopi Kita", category: "Minuman", rating: 4.7, distance: "0.8 km" },  
     { id: 2, name: "Laundry Bersih", category: "Jasa", rating: 4.5, distance: "1.2 km" },
     { id: 3, name: "Bakso Mantap", category: "Makanan", rating: 4.8, distance: "0.5 km" },
     { id: 4, name: "Toko Roti", category: "Makanan", rating: 4.6, distance: "1.0 km" },
@@ -31,47 +45,37 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
-      <header className="navbar">
-        <h1 className="logo">Locafy</h1>
-        <div className="nav-right">
-          <div className="search-wrapper">
-            <Search className="search-icon" />
-            <input
-              type="text"
-              placeholder="Search..."
-              className="nav-search"
-            />
-          </div>
-          <Mail className="nav-icon" />
-          <Bell className="nav-icon" />
-          <User className="nav-icon" />
-        </div>
-      </header>
+      <Navbar />
 
       <div className="main-container">
         <div className="content-area">
           <div className="hero-carousel">
-            <button 
-              onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
-              className="carousel-btn carousel-btn-left"
-            >
-              <ChevronLeft className="carousel-icon" />
-            </button>
-            <button 
-              onClick={() => setCurrentSlide(Math.min(2, currentSlide + 1))}
-              className="carousel-btn carousel-btn-right"
-            >
-              <ChevronRight className="carousel-icon" />
-            </button>
-            <div className="carousel-dots">
-              {[0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  className={`dot ${i === currentSlide ? 'dot-active' : ''}`}
-                />
-              ))}
-            </div>
-          </div>
+  <img 
+    src={heroImages[currentSlide]} 
+    alt={`Hero slide ${currentSlide + 1}`}
+    className="hero-image"
+  />
+
+  <button 
+    onClick={() => setCurrentSlide((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1))}
+    className="carousel-btn carousel-btn-left"
+  >
+    <ChevronLeft className="carousel-icon" />
+  </button>
+
+  <button 
+    onClick={() => setCurrentSlide((prev) => (prev === heroImages.length - 1 ? 0 : prev + 1))}
+    className="carousel-btn carousel-btn-right"
+  >
+    <ChevronRight className="carousel-icon" />
+  </button>
+
+  <div className="carousel-dots">
+    {heroImages.map((_, i) => (
+      <div key={i} className={`dot ${i === currentSlide ? "dot-active" : ""}`} />
+    ))}
+  </div>
+</div>
 
           <div className="search-filter-bar">
             <div className="main-search">
