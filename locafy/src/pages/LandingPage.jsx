@@ -20,19 +20,20 @@ const LandingPage = () => {
 
   
   const umkmList = [
-    { id: 1, name: "Kopi Kita", category: "Minuman", rating: 4.7, distance: "0.8 km" },  
-    { id: 2, name: "Laundry Bersih", category: "Jasa", rating: 4.5, distance: "1.2 km" },
-    { id: 3, name: "Bakso Mantap", category: "Makanan", rating: 4.8, distance: "0.5 km" },
-    { id: 4, name: "Toko Roti", category: "Makanan", rating: 4.6, distance: "1.0 km" },
-    { id: 5, name: "Warung Nasi", category: "Makanan", rating: 4.9, distance: "0.3 km" },
-    { id: 6, name: "Cuci Motor", category: "Jasa", rating: 4.4, distance: "1.5 km" },
-    { id: 7, name: "Salon Cantik", category: "Jasa", rating: 4.7, distance: "0.9 km" },
-    { id: 8, name: "Kedai Teh", category: "Minuman", rating: 4.5, distance: "1.1 km" },
-    { id: 9, name: "Toko Batik", category: "Fashion", rating: 4.6, distance: "1.3 km" },
-    { id: 10, name: "Warung Soto", category: "Makanan", rating: 4.8, distance: "0.7 km" },
-    { id: 11, name: "Bengkel Motor", category: "Jasa", rating: 4.3, distance: "1.8 km" },
-    { id: 12, name: "Kedai Kopi", category: "Minuman", rating: 4.7, distance: "0.6 km" },
-  ];
+  { id: 1, name: "Kopi Kita", category: "Minuman", rating: 4.7, distance: "0.8 km", image: "/images/kopi_kita/orang-orang-di-pesta-makanan-lokal-sehat_53876-92228.jpg" },
+  { id: 2, name: "Laundry Bersih", category: "Jasa", rating: 4.5, distance: "1.2 km", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800" },
+  { id: 3, name: "Bakso Mantap", category: "Makanan", rating: 4.8, distance: "0.5 km", image: "https://riaupagi.com/media/CACHE/images/images/image_202205076309_4488/64c7fe0345b8712d80d83138901c5b4b.webp" },
+  { id: 4, name: "Toko Roti", category: "Makanan", rating: 4.6, distance: "1.0 km", image: "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,f_auto,q_auto:best,w_640/v1634025439/01jhm4rkyb5mcs69jmz8e7yxyz.jpg" },
+  { id: 5, name: "Warung Nasi", category: "Makanan", rating: 4.9, distance: "0.3 km", image: "https://asset.kompas.com/crops/YvTi4Kha7KoVqaLlH2NqHaRXMrs=/0x133:1600x1200/1200x800/data/photo/2022/10/30/635e378fea5f2.jpeg" },
+  { id: 6, name: "Cuci Motor", category: "Jasa", rating: 4.4, distance: "1.5 km", image: "https://www.olx.co.id/news/wp-content/uploads/2024/04/cuci-motor-696x464.jpg" },
+  { id: 7, name: "Salon Cantik", category: "Jasa", rating: 4.7, distance: "0.9 km", image: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800" },
+  { id: 8, name: "Kedai Teh", category: "Minuman", rating: 4.5, distance: "1.1 km", image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800" },
+  { id: 9, name: "Toko Batik", category: "Fashion", rating: 4.6, distance: "1.3 km", image: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p2/255/2024/11/08/Screenshot_2024-11-08-11-22-10-28_3d9111e2d3171bf4882369f490c087b4-1211455573.jpg" },
+  { id: 10, name: "Warung Soto", category: "Makanan", rating: 4.8, distance: "0.7 km", image: "https://statik.tempo.co/data/2017/11/23/id_664913/664913_720.jpg" },
+  { id: 11, name: "Bengkel Motor", category: "Jasa", rating: 4.3, distance: "1.8 km", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBhIDBcbDZSKopVPWSBzrR8ApFiB9R3npq8w&s" },
+  { id: 12, name: "Kedai Kopi", category: "Minuman", rating: 4.7, distance: "0.6 km", image: "https://images.unsplash.com/photo-1445077100181-a33e9ac94db0?w=800" },
+];
+
 
   const categories = [
     "Semua Kategori",
@@ -98,7 +99,10 @@ const LandingPage = () => {
           <div className="umkm-grid">
             {umkmList.map((item) => (
               <div key={item.id} className="umkm-card">
-                <div className="umkm-image"></div>
+                <div className="umkm-image">
+  <img src={item.image} alt={item.name} />
+</div>
+
                 <div className="umkm-info">
                   <h3 className="umkm-name">{item.name}</h3>
                   <p className="umkm-category">{item.category}</p>
